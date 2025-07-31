@@ -2,9 +2,9 @@ name: CI/CD React App
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 permissions:
   contents: write  
@@ -31,13 +31,11 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      # Configure Git identity
       - name: Configure Git
         run: |
           git config --global user.name "balasagar0"
           git config --global user.email "sagardesina@gmail.com"
 
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
